@@ -29,14 +29,13 @@ export default function towatch() {
     }
     return (
         <div class="container">
-            <Link to="/">home</Link>
-            <h1>Lista de Atividades</h1>
+            <h1>Lista de Doramas</h1>
             <form onSubmit={salvar}>
                 <input type="text"
                     value={atividade}
                     onChange={(e) => { setAtividade(e.target.value) }} />
                 <button>ADD</button>
-            </form>
+            </form >
             {lista.map((ativ) =>
                 <ul key={ativ.id}>
                     <li>

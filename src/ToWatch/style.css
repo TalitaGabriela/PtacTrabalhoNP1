@@ -1,3 +1,5 @@
+/*Estilização do trabalho*/
+
 body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     background-image:url(drama.jpg);
@@ -43,7 +45,7 @@ body {
   }
   
   .todo-item button {
-    background-color: red;
+    background-color: rgb(253, 102, 228);
     color: white;
     padding: 10px;
     border-radius: 4px;
@@ -54,7 +56,7 @@ body {
   }
   
   .todo-item.important {
-    color: red;
+    color: rgb(253, 102, 228);
   }
   
   .todo-item.today {

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import "./style.css";
 
-export default function towatch() {
+export default function towatch() {//uso de componente//
+    // uso de 3 props em cada objeto onde cada uma recebe um useState(estado)//
     const [atividade, setAtividade] = useState("");
-    const [lista, setLista] = useState([]);
+    const [lista, setLista] = useState([]);//useState que utiliza Array//
     const [id, setId] = useState(1);
 
     const salvar = (e) => {

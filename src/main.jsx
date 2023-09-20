@@ -8,6 +8,7 @@ import ToWach from './ToWatch/ToWatch.jsx'
 
 //Renderização dos objetos JSX// 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  //Definição de rotas de navegação//
   <React.StrictMode>
     <BrowserRouter>
     <Routes>

@@ -1,16 +1,20 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import "./style.css";
 
 export default function towatch() {//uso de componente//
     // uso de 3 props em cada objeto onde cada uma recebe um useState(estado)//
+    const listaLocalStorage = JSON.parse(localStorage.getItem("Lista"));
     const [atividade, setAtividade] = useState("");
-    const [lista, setLista] = useState([]);//useState que utiliza Array//
+    const [lista, setLista] = useState(listaLocalStorage || []);//useState que utiliza Array//
     const [id, setId] = useState(1);
+
+    useEffect(() => {localStorage.setItem("Lista", JSON.stringify(lista))}, [lista]);
 
     const salvar = (e) => {
         e.preventDefault();
         setLista([...lista, {
-            atividade: atividade,
+            atividade: atividade,   
             id: id
         }]);
         setId(id + 1);

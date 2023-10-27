@@ -1,36 +1,26 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import "./style.css";
 
 export default function ToWatch() {
     const listaLocalStorage = JSON.parse(localStorage.getItem("Lista"));
-    const [count, setCount] = useState(0);
     const [atividade, setAtividade] = useState("");
     const [lista, setLista] = useState(listaLocalStorage || []);
-    const [id, setId] = useState(1);
+    const [id, setId] = useState(listaLocalStorage [listaLocalStorage.length - 1]?.id + 1||1);
     document.title = `Lista Dorama`
 
-    useEffect(() => {
-        localStorage.setItem("Lista", JSON.stringify(lista));
-        if (count <= 0) { 
-            document.title = `LISTA DORAMA`;
-        } else if (count == 1) {
-            document.title = `SUA LISTA TEM ${count} DORAMA`;
-        } else if (count > 1) { 
-            document.title = `SUA LISTA TEM ${count} DORAMAS`;
-        }
-    }, [lista, count]);
+    useEffect(() => {localStorage.setItem("Lista", JSON.stringify(lista));}, [lista]);
 
     const salvar = (e) => {
         e.preventDefault();
         setLista([...lista, { atividade: atividade, id: id }]);
         setId(id + 1);
         setAtividade("");
-        setCount(count + 1);
     };
 
     const remover = (id) => {
         setLista(lista.filter((ativ) => ativ.id !== id));
-        setCount(count - 1);
     }
 
     return (
@@ -44,8 +34,11 @@ export default function ToWatch() {
             </form >
             {lista.map((ativ) =>
                 <ul key={ativ.id}>
-                    <li>
+
+                    <Link to={`/detalhe/${ativ.id}`}>
                         <p>{ativ.atividade}</p>
+                    </Link>
+                    <li>
                         <button onClick={() => remover(ativ.id)}>REMOVE</button>
                     </li>
                 </ul>
